@@ -1,0 +1,62 @@
+{
+  "course": "build-chip8-emulator",
+  "language": "go",
+  "language_id": 60,
+  "entrypoint": "main.go",
+  "version": 1,
+  "content_hash": "4fb62b04b169dfee",
+  "lessons": [
+    {
+      "slug": "what-is-chip8",
+      "tests_hash": "324d0c761045"
+    },
+    {
+      "slug": "registers-memory",
+      "tests_hash": "f18ca0c6b41a"
+    },
+    {
+      "slug": "fetch-decode",
+      "tests_hash": "3e6ca9cc37cc"
+    },
+    {
+      "slug": "alu-instructions-c8",
+      "tests_hash": "8b6f510546c4"
+    },
+    {
+      "slug": "stack-jumps",
+      "tests_hash": "fa475f6f8716"
+    },
+    {
+      "slug": "memory-instructions",
+      "tests_hash": "84df401b76cf"
+    },
+    {
+      "slug": "display",
+      "tests_hash": "cdb59c56d1a5"
+    },
+    {
+      "slug": "input-timers",
+      "tests_hash": "cbc49167127c"
+    },
+    {
+      "slug": "fx0a-keywait",
+      "tests_hash": "b88ffdef259e"
+    },
+    {
+      "slug": "complete-cpu",
+      "tests_hash": "29be91327e89"
+    },
+    {
+      "slug": "rom-loader",
+      "tests_hash": "5454a58895cc"
+    },
+    {
+      "slug": "chip8-quirks",
+      "tests_hash": "1ad41c76cc93"
+    },
+    {
+      "slug": "production-emulators",
+      "tests_hash": "77f776e5a397"
+    }
+  ]
+}
