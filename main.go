@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
 // TODO (what-is-chip8): implement per the lesson description.
@@ -18,7 +19,11 @@ func main() {
 		if line == "" {
 			continue
 		}
-		MemoryLayout(line)
+		VFCarry(line)
+	}
+	err := sc.Err()
+	if err != nil {
+		log.Println("Error in scanner.", err)
 	}
 }
 
@@ -35,4 +40,21 @@ func MemoryLayout(hexAddress string) {
 	} else {
 		fmt.Println("INVALID")
 	}
+}
+
+func VFCarry(line string) {
+	numbers := strings.Split(line, " ")
+	VX, err := strconv.ParseInt(numbers[0], 10, 32)
+	if err != nil {
+		log.Println("Error converting int.", err)
+	}
+	VY, err := strconv.ParseInt(numbers[1], 10, 32)
+	if err != nil {
+		log.Println("Error converting int.", err)
+	}
+	VF := 0
+	if VX+VY >= 256 {
+		VF = 1
+	}
+	fmt.Printf("%d %d\n", (VX+VY)%256, VF)
 }
