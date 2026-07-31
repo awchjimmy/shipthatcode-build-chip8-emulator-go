@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 2026-07-31
+- 繼續 Fetch-Decode-Execute。
+
 ## 2026-07-30
 - 實作 decode opcode。
 - 實作 VF 暫存器。
