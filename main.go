@@ -64,14 +64,17 @@ func DecodeOpcode(line string) {
 	if err != nil {
 		log.Println("Error could not decode opcode.", err)
 	}
-	switch opcode {
-	case 0x00E0:
-		fmt.Println("CLS")
-	case 0x00EE:
-		fmt.Println("RET")
-	}
 
-	switch (opcode & 0xF000) >> 12 {
+	switch Decode(int(opcode)).High4 {
+	case 0x0:
+		switch opcode {
+		case 0x00E0:
+			fmt.Println("CLS")
+		case 0x00EE:
+			fmt.Println("RET")
+		default:
+			fmt.Println("UNKNOWN")
+		}
 	case 0x1:
 		fmt.Println("JP")
 	case 0x2:
@@ -99,8 +102,37 @@ func DecodeOpcode(line string) {
 	case 0xD:
 		fmt.Println("DRW")
 	case 0xE:
-		fmt.Println("SKP")
+		switch Decode(int(opcode)).KK {
+		case 0x9E:
+			fmt.Println("SKP")
+		case 0xA1:
+			fmt.Println("SKNP")
+		default:
+			fmt.Println("UNKNOWN")
+		}
 	case 0xF:
 		fmt.Println("FX")
+	default:
+		fmt.Println("UNKNOWN")
+	}
+}
+
+type DecodeHelper struct {
+	High4 int
+	X     int
+	Y     int
+	N     int
+	KK    int
+	NNN   int
+}
+
+func Decode(opcode int) DecodeHelper {
+	return DecodeHelper{
+		High4: (opcode & 0xF000) >> 12,
+		X:     (opcode & 0x0F00) >> 8,
+		Y:     (opcode & 0x00F0) >> 4,
+		N:     opcode & 0x000F,
+		KK:    opcode & 0x00FF,
+		NNN:   opcode & 0x0FFF,
 	}
 }
